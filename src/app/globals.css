@@ -6,3 +6,33 @@ body{
     background-color: #111;
     color: white;
 }
+
+#magic{
+    height: 100vh;
+    background: url("../assets/magic.png");
+    background-size: cover;
+    background-position-y: 0px ;
+    animation: move 1s alternate infinite ;
+}
+
+@keyframes move{
+    from{
+        background-position-y: 0px ;
+    }
+
+    to{
+        background-position-y: 8px ;
+    }
+}
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+  }
+}
