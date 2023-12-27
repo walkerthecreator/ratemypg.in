@@ -16,7 +16,9 @@ const NavBar = () => {
                     <li >About</li>
                 </ul>
             </div>
-            <button className="mr-10 font-satoshi font-semibold text-s px-6 p-1 bg-gradient-to-br from-zinc-900 via-zinc-700 border border-zinc-700 to-zinc-900 rounded-lg">login</button>
+            {/* <button className="mr-10 font-satoshi font-semibold text-s px-6 p-1 bg-gradient-to-br from-zinc-900 via-zinc-700 border border-zinc-700 to-zinc-900 rounded-lg">
+                <Link href='/auth/signup'>login</Link>
+                </button> */}
         </nav>
     </>
 }
