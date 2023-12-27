@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import {connect} from "@/config/dbConfig"
-import Review from "@/models/reveiw"
+import Pg from "@/models/Pg"
 
 connect()
 
 export async function GET(req : NextRequest){
     try{
 
-        const reviews = await Review.find()
+        const reviews = await Pg.find()
         return NextResponse.json({reviews} , { status : 200 } )
     }
     catch(err){

@@ -1,17 +1,16 @@
 import Review from "@/models/reveiw"
 import { NextRequest, NextResponse } from "next/server"
 
-
-export const GET = (req : NextRequest) => {
+export const POST = async (req : NextRequest) => {
     try{
-        const {id} = req.params
-        console.log(id)
-        // const data = await Review.find({_id : id})
-        return NextResponse.json({ message : "working" } ,{ status : 200 })
-    }
+        const { id } = await req.json() 
+
+        const data = await Review.find({ name : splitedName})
+        console.log(data)
+        return NextResponse.json({ data : data } ,{ status : 200 })
+    } 
     catch(err){
         return NextResponse.json({ message : "oops" } , { status : 400 } )
     }
-
 }
 

@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 import Review from "@/models/reveiw" 
 import {connect} from "@/config/dbConfig"
+import Pg from "@/models/Pg"
 
 connect()
 
 export const POST = async(req : NextRequest) => {
     try{
         const reqBody = await req.json()
-        
+
+
         const post = await Review.find({ "name" : { "$regex" : reqBody.query }  }).select("name")
         return NextResponse.json({ suggestion : post } , { status : 200 })
     }
