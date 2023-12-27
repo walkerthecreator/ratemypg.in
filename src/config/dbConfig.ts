@@ -2,8 +2,7 @@ import mongoose from "mongoose"
 
 export async function connect(){
     try{
-        // mongoose.connect(process.env.MONGO_URI!)
-        mongoose.connect("mongodb+srv://nitinjaswal:admin@cluster0.mdiiqwv.mongodb.net/ratemypg")
+        mongoose.connect(process.env.MONGO_URI!)
         const db = mongoose.connection
         
 

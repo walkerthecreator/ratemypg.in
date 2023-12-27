@@ -9,7 +9,7 @@ export default function SignInWithGoogle(){
             onClick={ ()=> { signIn('google' , {
                 callbackUrl : `${window.location.origin}/pg/add-new-pg`
             }) }}
-            className="bg-zinc-200 text-black font-semibold p-1 rounded">
+            className="bg-zinc-200 font-satoshi text-black font-semibold p-1 rounded">
                 Sign in with google 
             </button>
 }
