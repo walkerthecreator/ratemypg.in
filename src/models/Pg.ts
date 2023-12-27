@@ -5,6 +5,16 @@ const pgSchema = new mongoose.Schema({
         type : String ,
         required : true
     } ,
+    reviews : [{ 
+                type : mongoose.Schema.Types.ObjectId ,
+                ref : 'Review'
+             }
+        ]
+    ,
+    type : {
+        type : String ,
+        required : true
+    } ,
     sector : {
         location : String ,
     } ,
@@ -13,13 +23,9 @@ const pgSchema = new mongoose.Schema({
         required : true    
     } ,
     owner : {
-        name : {
-            type : String 
-        } ,
-        contact : {
-            type : Number 
-        }   
-    } ,
+        type : String 
+    }      
+    ,
     postedBy : {
         type : mongoose.Schema.Types.ObjectId ,
         ref : 'User' ,

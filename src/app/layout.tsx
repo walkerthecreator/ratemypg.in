@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import AuthProvider from './context/AuthProvider'
+import NavBar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +22,12 @@ export default function RootLayout({
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet" />
             </head>
         
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+            <AuthProvider>
+                <NavBar />
+                {children}
+            </AuthProvider>
+        </body>
     </html>
   )
 }

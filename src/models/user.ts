@@ -1,7 +1,6 @@
 import mongoose from "mongoose"
 
 
-// Define the schema for the Users collection
 const userSchema = new mongoose.Schema({
     username: {
       type: String,
@@ -13,10 +12,24 @@ const userSchema = new mongoose.Schema({
     },
     password: {
       type: String,
-      required: true
+    } ,
+    googleAuth : {
+        type : Boolean,
+        default : false
+    } ,
+    picture : {
+        type : String ,
+    } ,
+    reviews : {
+        type : mongoose.Schema.Types.ObjectId ,
+        ref : "Review"
+    } ,
+    pg : {
+        type : mongoose.Schema.Types.ObjectId ,
+        ref : "Pg"
     }
   });
 
-  const User = mongoose.model("User" , userSchema )
+  const User = mongoose.models.User || mongoose.model("User" , userSchema )
 
   export default User

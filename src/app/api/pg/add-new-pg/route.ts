@@ -8,25 +8,41 @@ export const GET = async() => {
     }
     catch(err){
         return NextResponse.json({ message : "oops ! something went wrong" } , { status : 400 })
-    }
-    
+    }  
 } 
 
 
 export const POST = async(req : NextRequest) => {
     try{
-        const reqBody = req.body!
-        const pg = await Pg.find({ name : reqBody.name })
+        const body = await req.json()
+        const { name , sector , location , owner , type} = body 
 
-        if(reqBody.sector){
+
+        const pg = await Pg.find({ name : body.name })
+
+        if(body.sector && pg){
+
             for(let i of pg){
-                if(i?.sector == reqBody.sector){
+                if(i.sector == body.sector){
                     return NextResponse.json({  message : `Pg with name ${ pg.name } already exsist in sector ${ pg.sector } ` } ,{ status : 400 })
                 }
             }
+
+            console.log("type" , type)
+
+            const newPg = await Pg.create({ 
+                    name , sector , location , owner , 
+                    type ,
+                    postedBy : body.user
+                 })
+
+                 
+
+            return NextResponse.json({ message : `Successfully added ${newPg.name} , now you can add reviews to ${ newPg.name }` }, { status : 200 })
+
+
         }
 
-        return NextResponse.json({ message : `Successfully added ${pg.name} , now you can add reviews to ${ pg.name }` }, { status : 200 })
 
     }
     catch(err){

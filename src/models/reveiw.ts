@@ -5,12 +5,15 @@ const reviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    // required: true
   },
   name : {
     type : String ,
     required : true
   },
+  pg : {
+    type : mongoose.Schema.Types.ObjectId ,
+    ref : 'Pg'
+  } ,
   sector : {
     type : String ,
     required : true
@@ -66,6 +69,7 @@ const reviewSchema = new mongoose.Schema({
   }
 } );
 
+const Review = mongoose.models.Review || mongoose.model('Review', reviewSchema);
 
 
 // Define the schema for the Photos collection
@@ -77,7 +81,6 @@ const reviewSchema = new mongoose.Schema({
 // });
 
 // Create the models using the defined schemas
-const Review = mongoose.models.Review || mongoose.model('Review', reviewSchema);
 
 // const Photo = mongoose.model('Photo', photoSchema);
 
