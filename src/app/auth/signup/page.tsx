@@ -1,3 +1,4 @@
+import SignInWithGithub from "@/components/SignInWithGithub";
 import SignInWithGoogle from "@/components/SignInWithGoogle";
 
 
@@ -18,7 +19,7 @@ export default function Signup(){
             <span className="text-zinc-500 text-xs text-center my-2">or</span>
 
             <SignInWithGoogle />
-            
+            <SignInWithGithub />
         </div>
             </div> 
         </>
