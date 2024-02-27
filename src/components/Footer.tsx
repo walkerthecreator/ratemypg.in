@@ -10,7 +10,11 @@ const Footer = () => {
 
             <div className="">
                 <h2 className="text-xl font-semibold">QuickLinks</h2>
-                ul
+                <ul>
+                    <li>instagram</li>
+                    <li>twitter</li>
+                    <li>gmail</li>
+                </ul>
             </div>
 
             <div>

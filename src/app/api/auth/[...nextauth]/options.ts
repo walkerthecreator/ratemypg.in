@@ -1,6 +1,6 @@
-import { getServerSession, type DefaultSession, type NextAuthOptions } from "next-auth"
+// import { getServerSession, type DefaultSession, type NextAuthOptions } from "next-auth"
+import { DefaultSession, NextAuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
-// import { connect } from "@/config/dbConfig"
 import User from "@/models/user"
 
 declare module "next-auth"{
@@ -44,7 +44,6 @@ export const options : NextAuthOptions = {
         session : ({ session , token }) => {
             if(token){
                 session.user.id = token.id
-                console.log("setting token id as " , token.id)
                 session.user.name = token.name
                 session.user.email = token.email 
             }
