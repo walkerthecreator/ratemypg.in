@@ -47,7 +47,6 @@ interface handler{
 }
 
 
-
 const AddPg = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [ pgData , setPgData ] = useState({name : "" , owner : "" ,  sector : ""})
@@ -111,7 +110,7 @@ const AddPg = () => {
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Pg Name <span className="text-red-500">*</span> </Label>
-                  <Input type="text" id="name" placeholder="Name of your Pg" value={pgData.name} name="name" onChange={handleChange}/>
+                  <Input type="text" id="name" placeholder="Name of your Pg" autoFocus value={pgData.name} name="name" onChange={handleChange}/>
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="accom">Accomodation Type <span className="text-red-500">*</span> </Label>
@@ -152,7 +151,7 @@ const AddPg = () => {
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Sector <span className="text-red-500">*</span> </Label>
-                  <Input id="name" placeholder="34a" name="sector" value={pgData.sector} onChange={handleChange}/>
+                  <Input id="name" placeholder="34a" name="sector" autoFocus value={pgData.sector} onChange={handleChange}/>
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="accom">City <span className="text-red-500">*</span></Label>
@@ -192,7 +191,7 @@ const AddPg = () => {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Owner Name</Label>
-                <Input id="name" placeholder="Nitin " name="owner" value={pgData.owner} onChange={handleChange} />
+                <Input id="name" placeholder="Nitin " name="owner" autoFocus value={pgData.owner} onChange={handleChange} />
               </div>
             </div>
           </form>

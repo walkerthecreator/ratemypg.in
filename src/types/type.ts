@@ -1,10 +1,12 @@
 
 export declare interface pg{
-    name : String ,
-    owner : String ,
+    _id : string ,
+    name : string ,
+    owner : string ,
     type : "pg" | "room" | "flat" ,
     sector : number ,
-    location : String
+    location : string ,
+    postedBy : string 
 }
 
 export declare interface suggestion {

@@ -13,10 +13,8 @@ export default function Home() {
   const [suggestions, setSuggestion] = useState([]);
 
   async function autoSuggest(query: string) {
-    console.log("hit")
     const response = await axios.post("/api/autosuggest", { query });
     let data = response.data;
-    
     setSuggestion(data.suggestion);
 
   }

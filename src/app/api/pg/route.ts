@@ -8,9 +8,8 @@ connect()
 
 export async function GET(req : NextRequest){
     try{
-
         const pgs = await Pg.find()
-        const reviewsCount = await Review.find().count()
+        const reviewsCount = await Review.find().countDocuments()
         return NextResponse.json({ pgs , reviewsCount  } , { status : 200 } )
     }
     catch(err){

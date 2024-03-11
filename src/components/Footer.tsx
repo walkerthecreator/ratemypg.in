@@ -5,11 +5,12 @@ const Footer = () => {
         <div className="flex justify-around">
 
             <div className="w-2/6">
-                <p >ratemypg is a review system that allow tenatas to read reviews before moving in to accomodation or write a review about your experinces.</p>
+                <h1 className="text-xl mb-2 font-semibold">what is ratemypg ?</h1>
+                <p >ratemypg is a review system that allow tenats to read reviews before moving in to accomodation or write a review about your experience.</p>
             </div>
 
             <div className="">
-                <h2 className="text-xl font-semibold">QuickLinks</h2>
+                <h2 className="text-xl font-semibold mb-2">QuickLinks</h2>
                 <ul>
                     <li>instagram</li>
                     <li>twitter</li>

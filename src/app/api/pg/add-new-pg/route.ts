@@ -15,8 +15,8 @@ export const GET = async() => {
 export const POST = async(req : NextRequest) => {
     try{
         const body = await req.json()
-        const { name , sector , location , owner , type} = body 
 
+        const { name , sector , location , owner , type} = body 
 
         const pg = await Pg.find({ name : body.name })
 
