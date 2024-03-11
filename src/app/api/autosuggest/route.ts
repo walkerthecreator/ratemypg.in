@@ -10,7 +10,7 @@ export const POST = async(req : NextRequest) => {
         const reqBody = await req.json()
 
 
-        const post = await Review.find({ "name" : { "$regex" : reqBody.query }  }).select("name _id")
+        const post = await Review.find({ "name" : { "$regex" : reqBody.query.toLowerCase() }  }).select("name _id")
         return NextResponse.json({ suggestion : post } , { status : 200 })
     }
     catch(err){

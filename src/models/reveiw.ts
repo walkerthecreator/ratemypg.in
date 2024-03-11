@@ -59,6 +59,12 @@ const reviewSchema = new mongoose.Schema({
     min: 1,
     max: 5
   },
+  pros : {
+    type : [String] 
+  } ,
+  cons : {
+    type : [String]
+  } ,
   createdAt: {
     type: Date,
     default: Date.now

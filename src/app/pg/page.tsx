@@ -86,7 +86,7 @@ export function SkeletonDemo() {
                     
 
                     {
-                        pg.pgs?.map((item )=>{
+                        pg.pgs?.map((item)=>{   
                             return <>
                             <Link href={`/pg/${item._id}`} className="flex p-5 py-8 border-b-2 w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">
                                     <div className={"h-16 w-16 text-center pt-4 text-lg font-semibold rounded " + (item.type == "pg" ? "bg-blue-200 text-blue-700" : "bg-purple-200 text-purple-700")  }>{item.type}</div>
@@ -109,11 +109,13 @@ export function SkeletonDemo() {
 
                 </div>
                 <aside className="bg-zinc-900 font-satoshi border border-zinc-700 w-2/6 p-10 rounded-lg h-[500px]">
-                    <div className="">
-                        <h2 className="font-extrabold text-2xl "> can't find your Pg?</h2>
-                        <button className="bg-indigo-600 border-b-2 border-indigo-400 hover:border-transparent hover:translate-y-px p-1 px-4 rounded-lg text-white font-semibold my-4">
-                            <Link  href='/pg/add-new-pg'>add now</Link>
-                        </button>
+                    <div className="w-full">
+                        <h2 className="font-extrabold text-2xl mb-2"> can't find your Pg?</h2>
+                        <Link href='/pg/add-new-pg' >
+                            <button className="btn-primary m-0 w-full ">
+                            Add Your Pg
+                            </button>
+                        </Link>
                     </div>
 
                     <hr className="my-4 border border-zinc-600"/>

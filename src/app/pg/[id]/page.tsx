@@ -6,20 +6,19 @@ import { redirect } from "next/navigation"
 import Image from "next/image"
 import dateFormatter from "@/helper/DateFormatter"
 import Link from "next/link"
-import { Divide } from "lucide-react"
+import { pg } from "@/types/type"
+
 
 const SinglePg = ({params} : { params : {id : string }} ) => {
 
-    const [ pg , setPg ] = useState("")
+    const [ pg , setPg ] = useState< pg | "" >("")
 
-
-    const { data : session } = useSession({
-        required : true , 
-        onUnauthenticated(){
-            redirect('/api/auth/signin?callbackUrl=/pg')
-        }
-    })
-
+    // const { data : session } = useSession({
+    //     required : true , 
+    //     onUnauthenticated(){
+    //         redirect('/api/auth/signin?callbackUrl=/pg')
+    //     }
+    // })
 
     const id = params.id
 
@@ -29,12 +28,13 @@ const SinglePg = ({params} : { params : {id : string }} ) => {
             const res = await axios.post(`/api/pg/${id}`)
             const data = res.data
             setPg(data.data)
-            console.log(data.data)
         }
 
         getData()
 
     } , [id])
+
+    console.log("pg" , pg)
 
     return(
         <>
@@ -54,21 +54,24 @@ const SinglePg = ({params} : { params : {id : string }} ) => {
                 <h4 className="text">stayed at {pg?.name} ?</h4>
                 <h2 className="mt-1 text-3xl font-semibold ">Add your Experince with them</h2>
             </div>
+                <Link href={`/write-a-review/${id}`} className="btn-primary w-full text-center mt-6 mx-auto">write a review</Link>
         </div>
 
         <div className="p-5 w-4/5 border border-zinc-700 rounded-xl mx-auto flex flex-col justify-between">
             <div className="flex justify-between">
                 <h1 className="text-3xl font-semibold">Read review of { pg?.name }</h1>        
-                <Link href={`/write-a-review/${id}`} className="btn-primary">write a review</Link>
+                {/* <Link href={`/write-a-review/${id}`} className="btn-primary">write a review</Link> */}
             </div>
 
 
             <div>
+{/* 
                 {
                     pg.ratings?.map((item) => {
                         return <h1>item.name</h1>
                     })
-                }
+                } */}
+
             </div>
 
 

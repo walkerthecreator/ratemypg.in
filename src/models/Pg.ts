@@ -3,24 +3,24 @@ import mongoose from "mongoose"
 const pgSchema = new mongoose.Schema({
     name : {
         type : String ,
-        required : true
+        required : [true , "Missing Pg name"]
     } ,
     reviews : [{ 
                 type : mongoose.Schema.Types.ObjectId ,
                 ref : 'Review'
              }
-        ]
-    ,
+        ],
     type : {
         type : String ,
-        required : true
+        required : [true , "Missing type of accomodation"]
     } ,
     sector : {
-        location : String ,
+        type : String ,
+        required : [true , "Missing sector name"]
     } ,
     location : {
         type : String ,
-        required : true    
+        required : [true , "Missing pg location"]
     } ,
     owner : {
         type : String 
