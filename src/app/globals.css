@@ -4,6 +4,7 @@
 
 body{
     background-color: #111;
+    /* background-color: #eaeaea; */
     color: white;
 }
 
@@ -39,6 +40,12 @@ body{
 
 @layer components{
     .btn-primary{
-        @apply bg-blue-700 hover:border-transparent hover:translate-y-px p-1 px-4 text-white rounded-md border-b-2 border-blue-500 outline-2 ms-2
+        @apply bg-gradient-to-b from-blue-600 to-blue-700 hover:border-transparent hover:translate-y-px p-1 px-4 text-white rounded-md border-b-2 border-blue-500 outline-2 ms-2
     }
+}
+
+
+#about{
+    background-image: url('../assets/bg.png');
+    background-size: cover;
 }

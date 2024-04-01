@@ -16,7 +16,6 @@ export default function Home() {
     const response = await axios.post("/api/autosuggest", { query });
     let data = response.data;
     setSuggestion(data.suggestion);
-
   }
 
   useEffect(() => {
@@ -63,12 +62,12 @@ export default function Home() {
                       <>
                       <Link href={`/pg/${item._id}`} className="p-1 flex gap-2 font-medium items-center my-1 hover:text-blue-500 transition-colors">
                           <span>{item.name}</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>                      </Link>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>                      </Link>
                         <hr className="border-1 border-zinc-600 w-full" />
                       </>
                     );
                   })}
-                  <Link href='pg/add-new-pg' className="bg-blue-800 text-center m-2 w-full rounded font-medium p-2">Add your pg</Link>
+                  <Link href='pg/add-new-pg' className="btn-primary text-center m-2 w-full rounded font-medium p-2">Add your pg</Link>
                 </div>
               </div>
             )}
@@ -85,6 +84,7 @@ export default function Home() {
 
       <section className="p-5 mb-20" id="testimonial">
         <div className="flex gap-5">
+          <ReviewCard></ReviewCard>
           <ReviewCard></ReviewCard>
           <ReviewCard></ReviewCard>
           <ReviewCard></ReviewCard>

@@ -1,6 +1,9 @@
 "use client";
 import Star from "@/components/Star";
 import Features from "@/components/ui/Features";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface formData {
@@ -8,12 +11,29 @@ interface formData {
   bathroom: number,
   building: number,
   environment: number,
-  pros: string[] | [],
-  cons: string[] | [],
+  pros: string[] ,
+  cons: string[] ,
   review: string,
 }
 
-export default function ReviewPage() {
+type props = {
+  params: {
+    name : string
+  }
+}
+
+export default function ReviewPage({ params} : props ) {
+  
+  const router = useRouter()
+  const { data : session } = useSession({
+      required : true ,
+      onUnauthenticated(){
+          router.push(`/api/auth/signin?callbackUrl=/write-a-review/${params.name}`)
+      }
+  })
+
+
+
   const [formData, setFormData] = useState<formData>({
     room: 1,
     bathroom: 1,
@@ -31,22 +51,59 @@ export default function ReviewPage() {
   }
 
   function handleFeatures( name : string , type : string ){
-    setFormData({ ...formData , [type] : [...formData.pros , type ] })
+    if(type == 'pros'){     
+      if(formData.pros.indexOf(name) != -1){
+        
+        const updatedArray = formData.pros.filter((item, index) => {
+          return item != name
+        }) 
+
+        return setFormData({ ...formData , pros : updatedArray })
+      }
+      return setFormData({ ...formData , pros : [ ...formData.pros , name ] })
+    }
+
+
+    if(formData.cons.indexOf(name) != -1 ){
+      const updatedArray = formData.cons.filter((item) => {
+        return item != name
+      })
+      return setFormData({ ...formData , cons : updatedArray })
+    }
+    return setFormData({ ...formData , cons : [ ...formData.cons , name ] })
   }
 
-  function handleSubmit(){
+  async function handleSubmit(){
     if(formData.review.length <= 20 ){
-      setError({ message : "Review length must be atleast 20 words" , field : "Review" })
+      return setError({ message : "Review length must be atleast 20 words" , field : "Review" })
     }
     else if(formData.pros.length == 0 || formData.cons.length == 0){
-      setError({ message :  "Please Select atleast one Pros & one Cons" , field : "Feature" })
+      return setError({ message :  "Please Select atleast one Pros & one Cons" , field : "Feature" })
     }
     else{
       setError({message : "" , field : ""})
-      console.log('all Good')
     }
-  }
 
+    const data = { 
+      user : session?.user.id ,
+      pg : params.name ,
+      rating : {
+          room : formData.room ,
+          environment : formData.environment ,
+          location : formData.building,
+          bathroom : formData.bathroom 
+        },
+      pros : formData.pros ,
+      cons : formData.cons ,
+      review : formData.review
+    } 
+
+    const response = await axios.post('/api/pg/write-a-review' , data )
+    const responseData = response.data 
+    console.log("response while submitting" , responseData)
+    router.push(`/pg/${params.name}`)
+    
+  }
 
   return (
     <div className="mt-20 w-4/5 mx-auto ">
@@ -97,7 +154,7 @@ export default function ReviewPage() {
           <h2 className="text-2xl font-semibold">
             Rate the <span className="text-indigo-300">Building</span>
           </h2>
-          <p className="text-sm">Based on the Building's age security</p>
+          <p className="text-sm">Based on the Building&apos;s age security</p>
         </div>
 
         <div>

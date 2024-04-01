@@ -19,14 +19,14 @@ const userSchema = new mongoose.Schema({
     picture : {
         type : String ,
     } ,
-    reviews : {
+    reviews : [{
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Review"
-    } ,
-    pg : {
+    }] ,
+    pg : [{
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Pg"
-    }
+    }]
   });
 
   const User = mongoose.models?.User || mongoose.model("User" , userSchema );

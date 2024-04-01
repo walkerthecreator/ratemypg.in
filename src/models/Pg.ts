@@ -8,8 +8,7 @@ const pgSchema = new mongoose.Schema({
     reviews : [{ 
                 type : mongoose.Schema.Types.ObjectId ,
                 ref : 'Review'
-             }
-        ],
+             }],
     type : {
         type : String ,
         required : [true , "Missing type of accomodation"]
@@ -24,8 +23,7 @@ const pgSchema = new mongoose.Schema({
     } ,
     owner : {
         type : String 
-    }      
-    ,
+    },
     postedBy : {
         type : mongoose.Schema.Types.ObjectId ,
         ref : 'User' ,

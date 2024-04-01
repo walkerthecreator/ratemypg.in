@@ -1,7 +1,13 @@
+"use client"
+import { signIn } from "next-auth/react"
+import { useSearchParams } from "next/navigation"
 
 
 
 export default function Signup(){
+
+const searchParams = useSearchParams()
+
     return (
         <>
         <div className="w-screen p-10 drop-shadow-lg mt-40">
@@ -14,18 +20,10 @@ export default function Signup(){
 
             <p className="bg-emerald-50 p-1 rounded-md text-emerald-500 text-sm text-center font-medium">👤Your Identity will be Anonymous</p>
 
-            <button className="font-semibold font-satoshi bg-blue-500 text-blue-50 p-1 mt-4 hover:bg-blue-600 transition-all rounded-md">
+            <button onClick={ ()=>{ signIn("google" , { callbackUrl : searchParams.get('callbackUrl') || "/pg" }) } } className="font-semibold font-satoshi bg-blue-500 text-blue-50 p-1 mt-4 hover:bg-blue-600 transition-all rounded-md">
                 Continue With Google
             </button>
         </div>
-        {/* <div className="w-60 mx-auto mt-10">
-
-            <p className="font-medium text-lg">Features After Logging in</p>
-            <ul className="list-disc list-inside">
-                <li>Add your Pg</li>
-                <li>Add your Review</li>
-            </ul>
-        </div> */}
             </div> 
         </>
     )
