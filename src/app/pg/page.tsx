@@ -110,8 +110,8 @@ export function SkeletonDemo() {
                 </div>
                 <aside className="bg-zinc-900 font-satoshi border border-zinc-700 w-2/6 p-10 rounded-lg h-[500px]">
                     <div className="w-full">
-                        <h2 className="font-extrabold text-2xl mb-2"> can't find your Pg?</h2>
-                        <Link href='/pg/add-new-pg' >
+                        <h2 className="font-extrabold text-2xl mb-2"> can&apos;t find your Pg?</h2>
+                        <Link href="/pg/add-new-pg" >
                             <button className="btn-primary m-0 w-full ">
                             Add Your Pg
                             </button>

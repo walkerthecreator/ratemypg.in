@@ -161,8 +161,8 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
           <div className="flex flex-col my-10 gap-4">
               {
-                pg.reviews.map((item:any) => {
-                  return <div className="p-3 border-b-2 border-zinc-600 ">
+                pg.reviews.map((item:any ) => {
+                  return <div key={item._id} className="p-3 border-b-2 border-zinc-600 ">
 
                     <div className="flex items-start gap-4 my-3">
                         <span className="p-2 px-4 rounded-full bg-zinc-600 ">A</span>
@@ -174,10 +174,10 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
                     <div className="p-1 my-1">
                       {
-                        item.pros.map((item:string)=> <span className="p-1 px-2 text-sm m-1 rounded-full bg-emerald-900 text-emerald-400 ">{item}</span> )
+                        item.pros.map((item:string , index:number)=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-emerald-900 text-emerald-400 ">{item}</span> )
                       }
                       {
-                      item.cons.map((item: string )=> <span className="p-1 px-2 text-sm m-1 rounded-full bg-red-900 text-red-300">{item}</span> )
+                      item.cons.map((item: string , index : number )=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-red-900 text-red-300">{item}</span> )
                       }
                     </div> 
 
@@ -207,7 +207,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
                           <td>Bathroom</td>
                           <td className="ps-10">
                             <div className="flex">
-                                { [...Array(item.rating.bathroom)].map((_ ,index) => <span className="ml-1"><SingleStar/></span> ) }
+                                { [...Array(item.rating.bathroom)].map((_ ,index) => <span key={index} className="ml-1"><SingleStar/></span> ) }
                             </div>
                           </td>
                         </tr>
@@ -215,7 +215,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
                           <td>Room</td>
                           <td className="ps-10">
                             <div className="flex">
-                                { [...Array(item.rating.room)].map((_ ,index) =>  <span className="ml-1"><SingleStar/></span> ) }
+                                { [...Array(item.rating.room)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
                             </div>
                           </td>
                         </tr>
@@ -223,7 +223,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
                           <td>Location</td>
                           <td className="ps-10">
                             <div className="flex">
-                                { [...Array(item.rating.location)].map((_ ,index) =>  <span className="ml-1"><SingleStar/></span> ) }
+                                { [...Array(item.rating.location)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
                             </div>
                           </td>
                         </tr>
@@ -231,7 +231,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
                           <td>Building</td>
                           <td className="ps-10">
                             <div className="flex">
-                                { [...Array(item.rating.building)].map((_ ,index) =>  <span className="ml-1"><SingleStar/></span> ) }
+                                { [...Array(item.rating.building)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
                             </div>
                           </td>
                         </tr>
