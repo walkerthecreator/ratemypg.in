@@ -1,25 +1,27 @@
 "use client"
+import { SkeletonDemo } from "@/components/SkeletonPg"
 import { pg } from "@/types/type"
 import axios from "axios"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { Skeleton } from "@/components/ui/skeleton"
 interface pgType{
     pg : pg ,
     reviewsCount : number ,
 }
 
-export function SkeletonDemo() {
-    return (
-      <div className="flex items-center space-x-4">
-        <Skeleton className="h-12 w-12 rounded-full" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[250px]" />
-          <Skeleton className="h-4 w-[200px]" />
-        </div>
-      </div>
-    )
-  }
+interface pg{
+    createdAt: string;
+    location: string;
+    name: string;
+    owner: string;
+    postedBy: string;
+    reviews: string[];
+    type: string;
+    updatedAt: string;
+    __v: number;
+    _id: string;
+}
+
 
  function Pg(){
 
@@ -55,10 +57,6 @@ export function SkeletonDemo() {
             <h1 className="text-4xl mt-5 font-semibold text-center">Reveiws Pg or Room</h1>
 
             <div className="flex justify-end mx-auto mt-10">
-                {/* <div className=" ms-24 p-1 rounded bg-zinc-800 border border-zinc-600">
-                    <input type="text" placeholder="search pg" className="bg-transparent p-1 border-none"/>
-                    <button className="border-s-2 px-2 border-zinc-500">search</button>
-                </div> */}
 
                 <div className="flex gap-2 relative">
                     <button className="bg-zinc-800 p-2 px-4 rounded-md border border-zinc-600" onClick={()=>setShow(!show)}>filter</button>
