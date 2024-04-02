@@ -1,6 +1,14 @@
 import Pg from "@/models/Pg";
 import { NextRequest, NextResponse } from "next/server";
 
+interface pg {
+    name : string ,
+    sector : string ,
+    location : string ,
+    owner : string ,
+    type : "pg" | "room" | "flat"
+}
+
 export const GET = async() => {
     try{
         const pg = await Pg.find()
@@ -18,24 +26,21 @@ export const POST = async(req : NextRequest) => {
 
         const { name , sector , location , owner , type} = body 
 
-        const pg = await Pg.find({ name : body.name })
+        const pg : pg[] = await Pg.find({ name : body.name })
 
         if(body.sector && pg){
 
             for(let i of pg){
                 if(i.sector == body.sector){
-                    return NextResponse.json({  message : `Pg with name ${ pg.name } already exsist in sector ${ pg.sector } ` } ,{ status : 400 })
+                    return NextResponse.json({  message : `Pg with name ${ i.name } already exsist in sector ${ i.sector } ` } ,{ status : 400 })
                 }
             }
-
-            console.log("type" , type)
 
             const newPg = await Pg.create({ 
                     name , sector , location , owner , 
                     type ,
                     postedBy : body.user
                  })
-
                  
 
             return NextResponse.json({ message : `Successfully added ${newPg.name} , now you can add reviews to ${ newPg.name }` }, { status : 200 })

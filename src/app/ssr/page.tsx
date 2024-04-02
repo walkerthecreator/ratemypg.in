@@ -5,8 +5,9 @@ export default async function Page(){
     
     return <div>
         <h1>pgs</h1>
+
         {
-            data.pgs.map((item , index) => {
+            data.pgs.map((item : any , index : number ) => {
                 return <h1 key={index}>{item.name}</h1>
             })
         }   
