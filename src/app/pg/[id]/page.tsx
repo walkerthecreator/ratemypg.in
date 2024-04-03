@@ -8,6 +8,7 @@ import dateFormatter from "@/helper/DateFormatter";
 import Link from "next/link";
 import { pg } from "@/types/type";
 import { fromJSON } from "postcss";
+import SingleStar from "@/components/SingleStar";
 
 // const SinglePg = ({params} : { params : {id : string }} ) => {
 
@@ -92,18 +93,7 @@ import { fromJSON } from "postcss";
 //     )
 // }
 
-function SingleStar(){
-  return <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="16"
-  height="16"
-  fill="#ffc143"
-  className="bi bi-star-fill"
-  viewBox="0 0 16 16"
->
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-</svg>
-}
+
 
 const SinglePg = async ({ params }: { params: { id: string } }) => {
     let url = `http://localhost:3000/api/pg/${params.id}`
@@ -174,33 +164,13 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
                     <div className="p-1 my-1">
                       {
-                        item.pros.map((item:string , index:number)=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-emerald-900 text-emerald-400 ">{item}</span> )
+                        item.pros.map((item:string , index:number)=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-emerald-300/10 text-emerald-400 ">{item}</span> )
                       }
                       {
-                      item.cons.map((item: string , index : number )=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-red-900 text-red-300">{item}</span> )
+                      item.cons.map((item: string , index : number )=> <span key={index} className="p-1 px-2 text-sm m-1 rounded-full bg-rose-300/10 border-red-800 text-rose-400">{item}</span> )
                       }
                     </div> 
 
-                    {/* <div className="flex flex-col justify-between w-full my-4">
-                      <div className="flex justify-between w-60">
-                        <h4>Bathroom</h4>
-                        <div className="flex gap-1"> { [...Array(item.rating.bathroom)].map((_ ,index) => <SingleStar/>) }</div>
-                      </div>
-                      <div className="flex justify-between w-60">
-                        <h4>Room</h4>
-                        <div className="flex gap-1 "> { [...Array(item.rating.room)].map((_ ,index) => <SingleStar/>) }</div>
-                      </div>
-                      <div className="flex justify-between w-60">
-                        <h4>Location</h4>
-                        <div className="flex gap-1 ">{ [...Array(item.rating.location)].map((_ ,index) => <SingleStar/>) }</div>
-                      </div>
-                      <div className="flex justify-between w-60">
-                        <h4>Building</h4>
-                        <div>
-                          <div className="flex gap-1 ">{ [...Array(item.rating.building)].map((_ ,index) => <SingleStar/>) }</div>
-                        </div>
-                      </div>
-                    </div>  */}
 
                     <table className="my-4">
                         <tr>

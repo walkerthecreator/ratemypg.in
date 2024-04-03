@@ -22,11 +22,16 @@ interface Accom{
     _id: string;
 }
 
+interface pgObj {
+    pgs : Accom[] ;
+    reviewsCount : 9 ;
+}
+
 
  function Pg(){
 
     const [ loading , setLoading ] = useState(false)
-    const [ pg , setPg ] = useState([])
+    const [ pg , setPg ] = useState<pgObj | undefined >()
     const [count , setCount ] = useState({ pg : "" , reviews : "" })
     const [ show , setShow ] = useState(false)
  
@@ -81,9 +86,9 @@ interface Accom{
                         <SkeletonDemo/>
                     </div>
                 }
-                    
-
                     {
+                        (pg != null ) 
+                        && 
                         pg.pgs?.map((item : any )=>{   
                             return <>
                             <Link href={`/pg/${item._id}`} className="flex p-5 py-8 border-b-2 w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">

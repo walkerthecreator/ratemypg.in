@@ -1,16 +1,24 @@
-import Image from "next/image"
-import avatar from "@/assets/avatar.jpg"
+import SingleStar from "./SingleStar"
+
 
 const ReviewCard = () => {
     
     return (
-        <div className="w-96 p-4 bg-zinc-800 bg-gradient-to-br from-zinc-800 via-zinc-700 to-zinc-800 border border-gray-600 rounded-lg">
-            <p className="text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas dolor error eos laudantium quibusdam quae! Amet unde corrupti minus, nobis animi perspiciatis quis ad consequuntur quo earum eum tenetur fugit at voluptatum voluptate illo nulla voluptates provident! Est qui nostrum maxime.</p>
-            <div className="flex gap-2 items-center mt-4">
-                <Image src={avatar} className="rounded-full" height={30} width={30} alt="user avatar"></Image>
-                <h2 className="text-xl font-semibold">Rahul Pg</h2>
-            </div>
+        <div className="bg-zinc-900 border border-zinc-800 w-80 h-40 p-3 rounded-lg overflow-hidden ">
+
+        <div className="flex items-center justify-between">
+            <h2 className="font-medium">New Lucky Building</h2>
+            <span className="p-1 bg-zinc-800 rounded-md text-xs">Room</span>
         </div>
+
+        <div className="flex w-30 gap-1">
+            <SingleStar />
+            <SingleStar />
+            <SingleStar />
+        </div>
+
+        <p className="text-sm text-zinc-300 mt-3">Lorem ipsum dolor sit amet consectetur odio, nesciunt impedit porro delectus doloremque ex aperiam.</p>
+</div>
     )
 }
 

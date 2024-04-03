@@ -32,7 +32,7 @@ export const POST = async(req : NextRequest) => {
 
             for(let i of pg){
                 if(i.sector == body.sector){
-                    return NextResponse.json({  message : `Pg with name ${ i.name } already exsist in sector ${ i.sector } ` } ,{ status : 400 })
+                    return NextResponse.json({  message : `Pg with name ${ i.name } already exsist in sector ${ i.sector }` , success : false } ,{ status : 400 })
                 }
             }
 
@@ -43,14 +43,11 @@ export const POST = async(req : NextRequest) => {
                  })
                  
 
-            return NextResponse.json({ message : `Successfully added ${newPg.name} , now you can add reviews to ${ newPg.name }` }, { status : 200 })
-
-
+            return NextResponse.json({ message : `Successfully added ${newPg.name} , now you can add reviews to ${ newPg.name }` , success : true }, { status : 200 })
         }
-
-
     }
     catch(err){
+        console.log(err)
         return NextResponse.json({ message : "oops ! something went wrong" } , { status : 400 })
     }
 }

@@ -34,7 +34,7 @@ export default function Star({ handleChange , ratingFor , starIndex  } : props )
         return <span
             key={index} 
             onClick={()=>{ handleClick(index) }}
-            style={{ color: index <= hovered ? "#FFDF00" : "white" }}
+            style={{ color: index <= hovered ? "#ffc143" : "white" }}
             onMouseOver={() => {
               setHovered(index);
             }}
