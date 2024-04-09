@@ -104,6 +104,10 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
+        <Link className="bg-zinc-900 border border-zinc-700 p-1 px-4 rounded-lg fixed top-5 left-10 flex items-center" href='/pg'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          back
+        </Link>
       <main className="flex justify-center min-h-[70vh] mt-20 w-5/6 gap-4 mx-auto">
         <div className="flex flex-col w-2/6 rounded-xl p-5 ">
           <div className="border-b-2 border-zinc-700 pb-10">
@@ -139,7 +143,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
           {
             (pg.reviews.length < 3) ? 
             <div className="bg-sky-400 text-white p-3 rounded-md text-lg w-3/4 mx-auto flex gap-2 items-start">
-                <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
                 <div>
                   <p className="inline-block">It looks like <span className="font-semibold">{pg.name}</span> is new to ratemypg.in and only has {pg.reviews.length} reviews. For this page to be a helpful resource, we rely on the contribution of tenats</p>
                   <span className="font-semibold"> - ratemypg.in </span>
@@ -173,38 +177,40 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
 
                     <table className="my-4">
+                      <tbody>
                         <tr>
                           <td>Bathroom</td>
                           <td className="ps-10">
-                            <div className="flex">
+                            <span className="flex">
                                 { [...Array(item.rating.bathroom)].map((_ ,index) => <span key={index} className="ml-1"><SingleStar/></span> ) }
-                            </div>
+                            </span>
                           </td>
                         </tr>
                         <tr>
                           <td>Room</td>
                           <td className="ps-10">
-                            <div className="flex">
+                            <span className="flex">
                                 { [...Array(item.rating.room)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
-                            </div>
+                            </span>
                           </td>
                         </tr>
                         <tr>
                           <td>Location</td>
                           <td className="ps-10">
-                            <div className="flex">
+                            <span className="flex">
                                 { [...Array(item.rating.location)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
-                            </div>
+                            </span>
                           </td>
                         </tr>
                         <tr>
                           <td>Building</td>
                           <td className="ps-10">
-                            <div className="flex">
+                            <span className="flex">
                                 { [...Array(item.rating.building)].map((_ ,index) =>  <span key={index} className="ml-1"><SingleStar/></span> ) }
-                            </div>
+                            </span>
                           </td>
                         </tr>
+                        </tbody>
                     </table>
 
                   </div> 
@@ -226,7 +232,6 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
             <div>
               <p className="text-indigo-700 bg-indigo-200 font-semibold rounded-md w-fit p-1 text-xs ">
-                {" "}
                 Added on {dateFormatter(pg?.createdAt)}
               </p>
             </div>

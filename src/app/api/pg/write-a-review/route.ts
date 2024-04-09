@@ -11,6 +11,8 @@ export async function POST(req : NextRequest){
         const body = await req.json()
         const { pros , cons , rating , user , pg , review } = body
 
+        console.log("ratemypg" , pros , cons , rating , user , pg , review)
+
         const newReview = await Review.create({user , rating , pros , cons, pg , review })
         const pgName = await Pg.updateOne({ _id : pg } , { $push : { reviews : newReview._id } })
         const userReviews = await User.updateOne({ _id : user } , { $push : { reviews : newReview._id } }) 

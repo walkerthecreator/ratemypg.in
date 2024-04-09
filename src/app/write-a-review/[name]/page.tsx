@@ -33,7 +33,6 @@ export default function ReviewPage({ params} : props ) {
   })
 
 
-
   const [formData, setFormData] = useState<formData>({
     room: 1,
     bathroom: 1,
@@ -107,7 +106,7 @@ export default function ReviewPage({ params} : props ) {
 
   return (
     <div className="mt-20 w-4/5 mx-auto ">
-      <h1 className="text-4xl my-4 text-center">New Lucky Building</h1>
+      <h1 className="text-4xl my-4 text-center">Add a Review</h1>
       <div className="border border-zinc-700 rounded-md p-5 mt-12 flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-semibold">

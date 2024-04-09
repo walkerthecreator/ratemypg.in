@@ -13,12 +13,12 @@ const NavBar =  (props : Props ) => {
 
 
     return <>
-        <nav className="w-screen fixed top-4 flex">
-            <div className="border border-zinc-700 p-1 px-4 mx-auto w-2/4 flex justify-between rounded-md bg-zinc-900">
+        <nav className="w-screen fixed md:top-4 flex">
+            <div className="border border-zinc-700 p-1 px-4 mx-auto w-full md:w-2/4 flex justify-between rounded-md bg-zinc-900">
                     <Link href='/' className="font-medium cursor-pointer hover:text-blue-400">
                         ratemypg
                     </Link>
-                    <ul className="w-1/4 flex justify-between">
+                    <ul className="w-2/4 md:w-1/4 flex justify-between">
                         <Link href="/pg" className="hover:text-blue-300">Pg</Link>
                         <Link href="/sector"><li >Sector</li></Link> 
                         <Link href="/about"><li >About</li></Link>   
