@@ -37,7 +37,8 @@ export const POST = async(req : NextRequest) => {
             }
 
             const newPg = await Pg.create({ 
-                    name , sector , location , owner , 
+                    name : name.toLowerCase(),
+                    sector , location , owner , 
                     type ,
                     postedBy : body.user
                  })
