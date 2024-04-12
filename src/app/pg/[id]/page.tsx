@@ -96,11 +96,11 @@ import SingleStar from "@/components/SingleStar";
 
 
 const SinglePg = async ({ params }: { params: { id: string } }) => {
-    let url = `http://localhost:3000/api/pg/${params.id}`
+    let apiURL = process.env.DEV_URL ? process.env.DEV_URL : process.env.BUILD_URL
+    let url = `${apiURL }/api/pg/${params.id}`
     const response = await fetch(url);
     const formatted = await response.json();
     let pg = formatted.data
-    console.log(pg)
 
   return (
     <>
@@ -108,8 +108,8 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
           back
         </Link>
-      <main className="flex justify-center min-h-[70vh] mt-20 w-5/6 gap-4 mx-auto">
-        <div className="flex flex-col w-2/6 rounded-xl p-5 ">
+      <main className="flex flex-col md:flex-row justify-center min-h-[70vh] mt-20 md:w-5/6 gap-4 mx-auto">
+        <div className="flex flex-col w-full md:w-2/6 rounded-xl p-5 ">
           <div className="border-b-2 border-zinc-700 pb-10">
             <h1 className="text-3xl font-semibold">{pg?.name}</h1>
             <h3 className="mt-4">
@@ -133,7 +133,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
           </Link>
         </div>
 
-        <div className="p-5 w-4/5 border border-zinc-700 rounded-xl mx-auto flex flex-col justify-between">
+        <div className="p-5 w-full md:w-4/5 border border-zinc-700 rounded-xl mx-auto flex flex-col justify-between">
           <div className="flex justify-between">
             <h1 className="text-3xl font-semibold">
               Read review of {pg?.name}
@@ -142,7 +142,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
           {
             (pg.reviews.length < 3) ? 
-            <div className="bg-sky-400 text-white p-3 rounded-md text-lg w-3/4 mx-auto flex gap-2 items-start">
+            <div className="bg-zinc-800 border border-zinc-700 mt-10 text-white p-3 rounded-md text-lg w-full md:w-3/4 mx-auto flex gap-2 items-start">
                 <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
                 <div>
                   <p className="inline-block">It looks like <span className="font-semibold">{pg.name}</span> is new to ratemypg.in and only has {pg.reviews.length} reviews. For this page to be a helpful resource, we rely on the contribution of tenats</p>
@@ -218,7 +218,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
               }
             </div>
 
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="w-fit p-1 px-4  bg-zinc-900 border border-zinc-600 flex items-center gap-3 rounded-xl">
               <Image
                 className="rounded-full"

@@ -14,7 +14,7 @@ const NavBar =  (props : Props ) => {
 
     return <>
         <nav className="w-screen fixed md:top-4 flex">
-            <div className="border border-zinc-700 p-1 px-4 mx-auto w-full md:w-2/4 flex justify-between rounded-md bg-zinc-900">
+            <div className="border border-zinc-700 p-1 px-4 mx-auto w-full md:w-2/4 flex justify-between md:rounded-md bg-zinc-900">
                     <Link href='/' className="font-medium cursor-pointer hover:text-blue-400">
                         ratemypg
                     </Link>

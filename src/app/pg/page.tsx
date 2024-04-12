@@ -56,12 +56,12 @@ interface pgObj {
     } , [])
 
     return <>
-        <div className="mt-16 font-satoshi overflow-hidden">
+        <div className="md:mt-16 pt-10 font-satoshi overflow-hidden">
            
             <div className="w-4/5 mx-auto">
             <h1 className="text-4xl mt-5 font-semibold text-center">Reveiws Pg or Room</h1>
 
-            <div className="flex justify-end mx-auto mt-10">
+            {/* <div className="flex justify-end mx-auto mt-10">
 
                 <div className="flex gap-2 relative">
                     <button className="bg-zinc-800 p-2 px-4 rounded-md border border-zinc-600" onClick={()=>setShow(!show)}>filter</button>
@@ -71,11 +71,11 @@ interface pgObj {
 
                     </div>
                 </div>
-            </div>
+            </div>  */}
             
 
-            <div className="flex justify-between mt-10">
-                <div className="flex flex-col items-center w-4/6  h-[800px] overflow-y-auto">
+            <div className="flex flex-col md:flex-row justify-between mt-10 gap-4">
+                <div className="flex flex-col items-center w-full md:w-4/6  max-h-[800px] overflow-y-auto">
 
                 { 
                     loading 
@@ -91,8 +91,8 @@ interface pgObj {
                         && 
                         pg.pgs?.map((item : any )=>{   
                             return <>
-                            <Link href={`/pg/${item._id}`} className="flex p-5 py-8 border-b-2 w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">
-                                    <div className={"h-16 w-16 text-center pt-4 text-lg font-semibold rounded " + (item.type == "pg" ? "bg-blue-200 text-blue-700" : "bg-purple-200 text-purple-700")  }>{item.type}</div>
+                            <Link href={`/pg/${item._id}`} className="flex p-5 py-8 border-b-2 w-full md:w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">
+                                    <div className={"h-16 w-16 text-center pt-4 text-lg font-semibold md:rounded " + (item.type == "pg" ? "bg-blue-200 text-blue-700" : "bg-purple-200 text-purple-700")  }>{item.type}</div>
                                     <div className="p-2 w-full gap-3 ms-2">
                                         <h2 className="text-2xl font-semibold">{item.name}</h2>
                                         <div className="flex justify-between text-sm text-zinc-400 font-medium">
@@ -111,7 +111,7 @@ interface pgObj {
                     }
 
                 </div>
-                <aside className="bg-zinc-900 font-satoshi border border-zinc-700 w-2/6 p-10 rounded-lg h-[500px]">
+                <aside className="bg-zinc-900 font-satoshi border border-zinc-700 w-full md:w-2/6 p-10 rounded-lg h-[500px]">
                     <div className="w-full">
                         <h2 className="font-extrabold text-2xl mb-2"> can&apos;t find your Pg?</h2>
                         <Link href="/pg/add-new-pg" >

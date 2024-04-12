@@ -30,12 +30,10 @@ export default function Home() {
 
   return (
     <>
-      <NavBar></NavBar>
-      <div className="w-screen overflow-hidden">
+      {/* <NavBar></NavBar> */}
+      <div className="max-w-screen overflow-hidden">
 
-      <main
-        className="flex flex-col justify-center items-center min-h-screen p-4 md:p-24"
-        id="magic">
+      <main className=" flex flex-col justify-center items-center min-h-screen p-4 md:p-24" id="magic">
         <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-zinc-50 to-zinc-300">
           Search your Accomodation
         </h1>
@@ -43,16 +41,14 @@ export default function Home() {
          <span className="text-zinc-200">Add</span> or <span className="text-zinc-200">Read</span> reviews about your Pg/Room
         </p>
 
-        <div className="w-full max-sm:flex-col max-sm:mt-20 gap-2 justify-start md:w-2/4 flex md:justify-center mt-10">
+        <div className="w-full max-sm:flex-col max-sm:mt-4 gap-2 justify-start md:w-2/4 flex md:justify-center mt-10">
           <div>
-
             <input
               onChange={(e) => { console.log(e.target.value) ; setSearch(e.target.value); }}
               type="text"
-              className="border rounded-md p-2 border-zinc-600 px-4 bg-zinc-800 w-96 focus:border-zinc-4s00 outline-none"
+              className="border rounded-md p-2 border-zinc-600 px-4 bg-zinc-800 w-full md:w-96 focus:border-zinc-400 outline-none"
               placeholder="Seach for your pg"
             />
-
 
             {
               search.length > 0 && (
@@ -74,7 +70,7 @@ export default function Home() {
               </div>
             )}
           </div>
-          <button className="bg-blue-700 max-sm:w-96 hover:border-transparent hover:translate-y-px p-1 px-4 text-white rounded-md border-b-2 border-blue-500 outline-2 md:ms-2">
+          <button className="bg-blue-700 max-sm:w-full hover:border-transparent hover:translate-y-px p-1 px-4 text-white rounded-md border-b-2 border-blue-500 outline-2 md:ms-2">
             search
           </button>
         </div>
