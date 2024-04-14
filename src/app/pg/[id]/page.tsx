@@ -1,13 +1,6 @@
-// "use client"
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import dateFormatter from "@/helper/DateFormatter";
 import Link from "next/link";
-import { pg } from "@/types/type";
-import { fromJSON } from "postcss";
 import SingleStar from "@/components/SingleStar";
 
 // const SinglePg = ({params} : { params : {id : string }} ) => {
@@ -101,6 +94,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
     const response = await fetch(url);
     const formatted = await response.json();
     let pg = formatted.data
+    console.log(pg)
 
   return (
     <>
@@ -113,11 +107,12 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
           <div className="border-b-2 border-zinc-700 pb-10">
             <h1 className="text-3xl font-semibold">{pg?.name}</h1>
             <h3 className="mt-4">
-              Owner : <span className="font-semibold">{pg?.owner}</span>{" "}
+              Owner : <span className="font-semibold">{pg.owner? pg.owner : "Not Available"}</span>
             </h3>
           </div>
-          <div className="border-b-2 border-zinc-700 py-10">
+          <div className="border-b-2 border-zinc-700 py-10 flex gap-4  items-center">
             <h2>Overall Ratings</h2>
+            <span className="rounded-md bg-red-300 text-red-700 text-5xl p-2 px-4">0</span>
           </div>
           <div className="pt-4">
             <h4 className="text">stayed at {pg?.name} ?</h4>
@@ -141,11 +136,11 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
           </div>
 
           {
-            (pg.reviews.length < 3) ? 
+            (pg?.reviews.length < 3) ? 
             <div className="bg-zinc-800 border border-zinc-700 mt-10 text-white p-3 rounded-md text-lg w-full md:w-3/4 mx-auto flex gap-2 items-start">
                 <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
                 <div>
-                  <p className="inline-block">It looks like <span className="font-semibold">{pg.name}</span> is new to ratemypg.in and only has {pg.reviews.length} reviews. For this page to be a helpful resource, we rely on the contribution of tenats</p>
+                  <p className="inline-block">It looks like <span className="font-semibold">{pg.name}</span> is new to ratemypg.in and only has {pg?.reviews.length} reviews. For this page to be a helpful resource, we rely on the contribution of tenats</p>
                   <span className="font-semibold"> - ratemypg.in </span>
                 </div>
             </div>
@@ -155,7 +150,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
 
           <div className="flex flex-col my-10 gap-4">
               {
-                pg.reviews.map((item:any ) => {
+                pg?.reviews.map((item:any ) => {
                   return <div key={item._id} className="p-3 border-b-2 border-zinc-600 ">
 
                     <div className="flex items-start gap-4 my-3">
