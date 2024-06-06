@@ -9,11 +9,15 @@ body{
 }
 
 #magic{
-    height: 100vh;
+     height: 100vh;
     background: url("../assets/magic.png");
-    background-size: cover;
-    background-position-y: 0px ;
+    background-size: cover ;
+    background-position-y: 0px ; 
     animation: move 1s alternate infinite ;
+    /* background-color: #000000;
+    opacity: 0.1;
+    background-image:  linear-gradient(#a3a3a3 1.3px, transparent 1.3px), linear-gradient(to right, #a3a3a3 1.3px, #000000 1.3px);
+    background-size: 26px 26px; */
 }
 
 @keyframes move{

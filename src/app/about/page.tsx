@@ -1,4 +1,5 @@
 import ReviewCard from "@/components/ReviewCard";
+import Link from "next/link";
 
 
 export default function About(){
@@ -19,7 +20,7 @@ export default function About(){
             </div> 
 
 
-        <div className="mt-52 w-full md:w-3/5 lg:w-[50%] mx-auto text-center">
+    <div className="mt-52 w-full md:w-3/5 lg:w-[50%] mx-auto text-center">
             <h1 className="text-5xl md:text-center md:text-6xl lg:text-5xl lg:leading-tight font-bold bg-gradient-to-r text-transparent bg-clip-text from-blue-600 via-zinc-50 to-zinc-100 leading-tight">Discover, rate, and share your PG reviews with <span className="text-blue-600 text-5xl md:text-6xl lg:text-5xl bg-zinc-100 rounded-md">RateMyPG.</span> </h1>
             {/* <p className="text-2xl text-zinc-200 font-semibold mt-2">Where every opinion influences your next phenomenal choice!</p> */}
         </div>
@@ -39,12 +40,12 @@ export default function About(){
         </div>`
 
         <div className="w-fit group text-center mx-auto mt-20">
-            <button className="w-full text-4xl p-2 px-6 rounded-lg shadow-inner flex items-center animate-bounce">
+            <Link href="/pg" className="w-full text-4xl p-2 px-6 rounded-lg shadow-inner flex items-center">
                 Start Reading
                 <span className="group-hover:rotate-45 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                 </span>
-            </button>
+            </Link>
         </div>
     </div>
 }

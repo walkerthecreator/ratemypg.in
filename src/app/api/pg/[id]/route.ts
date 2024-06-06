@@ -1,5 +1,4 @@
 import Pg from "@/models/Pg"
-import Review from "@/models/reveiw"
 import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async (req : NextRequest  , {params} : { params : {id : string }} ) => {

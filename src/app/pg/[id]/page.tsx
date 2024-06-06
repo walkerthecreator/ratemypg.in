@@ -9,7 +9,6 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
     const response = await fetch(url);
     const formatted = await response.json();
     let pg = formatted.data
-    console.log(pg)
 
   return (
     <>
@@ -25,6 +24,7 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
               Owner : <span className="font-semibold">{pg.owner? pg.owner : "Not Available"}</span>
             </h3>
           </div>
+
           <div className="border-b-2 border-zinc-700 py-10 flex gap-4  items-center">
 
             <div className="w-2/5 mx-auto text-center bg-white text-zinc-700 p-2 px-4 rounded "> 
@@ -33,8 +33,6 @@ const SinglePg = async ({ params }: { params: { id: string } }) => {
                 <strong className="text-4xl py-3">3.4</strong>
             </div>
 
-            {/* <h2>Overall Ratings</h2> */}
-            {/* <span className="rounded-md bg-red-300 text-red-700 text-5xl p-2 px-4">0</span> */}
 
 
           </div>

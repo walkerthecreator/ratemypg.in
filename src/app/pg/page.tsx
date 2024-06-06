@@ -91,8 +91,8 @@ interface pgObj {
                         && 
                         pg.pgs?.map((item : any )=>{   
                             return <>
-                            <Link href={`/pg/${item._id}`} className="flex p-5 py-8 border-b-2 w-full md:w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">
-                                    <div className={"h-16 w-16 text-center pt-4 text-lg font-semibold md:rounded " + (item.type == "pg" ? "bg-blue-200 text-blue-700" : "bg-purple-200 text-purple-700")  }>{item.type}</div>
+                            <Link href={`/pg/${item._id}`} key={item._id} className="flex p-5 py-8 border-b-2 w-full md:w-4/5 border-zinc-600 hover:bg-zinc-900 cursor-pointer">
+                                    <div className={"h-16 w-20 text-center pt-4 text-xl font-semibold md:rounded " + (item.type == "pg" ? "bg-blue-200 text-blue-700" : "bg-purple-200 text-purple-700")  }>{item.type}</div>
                                     <div className="p-2 w-full gap-3 ms-2">
                                         <h2 className="text-2xl font-semibold">{item.name}</h2>
                                         <div className="flex justify-between text-sm text-zinc-400 font-medium">

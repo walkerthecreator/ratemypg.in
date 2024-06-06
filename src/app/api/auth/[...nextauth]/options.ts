@@ -22,7 +22,6 @@ export const options : NextAuthOptions = {
         strategy : "jwt"
     } ,
     callbacks : {
-
         jwt : async ({ token }) => {
             let user = await User.findOne({ email : token.email  })
 
